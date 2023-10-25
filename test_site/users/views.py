@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import LoginUserForm
 from django.urls import reverse
-# Create your views here.
+
 def login_user(request):
     if request.method == "POST":
         form = LoginUserForm(request.POST)
