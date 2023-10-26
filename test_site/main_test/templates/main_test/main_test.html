@@ -5,6 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<h3>Добро пожаловать на сайт с тестами!</h3>
+<h1>Добро пожаловать на сайт с тестами!</h1>
+<hr>
+{% for quiz in quizzes %}
+        <h2><a href="{% url 'quiz' quiz.slug %}">{{ quiz.title }}</a></h2>
+    <p><b>description:</b> {{ quiz.description }}</p>
+    <p><b>author:</b> {{ quiz.author }}</p>
+    <p><b>tags:</b> {% for tag in quiz.tags.all %}|{{ tag.title }}|{% endfor %}</p>
+    <hr>
+{% endfor %}
 </body>
 </html>

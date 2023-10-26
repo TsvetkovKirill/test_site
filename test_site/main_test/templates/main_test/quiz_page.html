@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ quiz.title }}</title>
+</head>
+<body>
+<h1>{{ quiz.title }}</h1>
+<h2>{{ quiz.description }}</h2>
+{% with likes_count=quiz.count_likes dislikes_count=quiz.count_dislikes %}
+    {% if likes_count > 0 %}
+        <p><b>likes:</b> {{ likes_count }}</p>
+    {% endif %}
+    {% if dislikes_count > 0 %}
+        <p><b>dislikes:</b> {{ dislikes_count }}</p>
+    {% endif %}
+{% endwith %}
+<button><a href="{% url 'quiz_content' quiz.slug %}">Start quiz!</a></button>
+<hr>
+<h1>Comments:</h1>
+<hr>
+{% for comment in quiz.comments.all %}
+    <p><i>{{ comment.created_at }}</i> from <b>{{ comment.user.username }}</b></p>
+    <p>{{ comment.content }}</p>
+    {% with likes_count=comment.count_likes dislikes_count=comment.count_dislikes %}
+        {% if likes_count > 0 %}
+            <p><b>likes:</b> {{ likes_count }}</p>
+        {% endif %}
+        {% if dislikes_count > 0 %}
+            <p><b>dislikes:</b> {{ dislikes_count }}</p>
+        {% endif %}
+    {% endwith %}
+    <hr>
+{% endfor %}
+</body>
+</html>

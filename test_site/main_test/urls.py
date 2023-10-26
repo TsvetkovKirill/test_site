@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views as tests
+from . import views as quizzes
 
 urlpatterns = [
-    path("", tests.home),
-    path("main/", tests.main_page, name="main_page"),
+    path("", quizzes.home),
+    path("main/", quizzes.main_page, name="main_page"),
+    path("quizzes/<slug:quiz_slug>/", quizzes.show_quiz, name="quiz"),
+    path("quizzes/<slug:quiz_slug>/content/", quizzes.show_quiz_content, name="quiz_content")
 ]
