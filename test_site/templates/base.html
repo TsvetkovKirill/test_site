@@ -5,7 +5,16 @@
     <title>Title</title>
 </head>
 <body>
+{% if user.is_authenticated %}
+<li class="last"> {{user.username}} | <a href="{% url 'users:logout' %}">Выйти</a></li>
+{% else %}
+<li class="last"><a href="{% url 'users:login' %}">Войти</a> | <a href="#">Регистрация</a></li>
+{% endif %}
 {% block content %}
+{% endblock %}
+{% block content_3%}
+{% endblock %}
+{% block content_2 %}
 {% endblock %}
 </body>
 </html>

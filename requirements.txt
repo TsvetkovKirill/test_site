@@ -4,3 +4,6 @@ psycopg2-binary==2.9.9
 
 django_extensions==3.2.3 # For debug
 django-nested-admin==4.0.2
+ipython==8.16.1 # for improve python shell (optionally)
+
+
